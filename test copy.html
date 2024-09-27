@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced UI</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 1em;
+    }
+
+    main {
+      padding: 20px;
+    }
+
+    #dashboard {
+      display: none;
+    }
+
+    .driver-node {
+      margin-bottom: 20px;
+      padding: 10px;
+      border: 1px solid #ddd;
+      background-color: #fff;
+      border-radius: 5px;
+    }
+
+    .test-id {
+      margin-top: 10px;
+    }
+
+    #tsunamiDelay {
+      display: none;
+    }
+
+    button {
+      padding: 10px;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button.yes {
+      background-color: #28a745;
+    }
+
+    button.no {
+      background-color: #dc3545;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Advanced UI</h1>
+  </header>
+
+  <main>
+    <div id="triggerPage">
+      <h2>Trigger Page</h2>
+      <p>Press Yes to proceed:</p>
+      <button class="yes" onclick="showDashboard()">Yes</button>
+      <button class="no">No</button>
+    </div>
+
+    <div id="dashboard">
+      <h2>DashBoard Page</h2>
+      <img src="dashboard-image.jpg" alt="Dashboard Image" width="400">
+      
+      <!-- Driver Nodes -->
+      <div class="driver-node">
+        <label for="numberOfDriverNodes">Number of Driver Nodes:</label>
+        <input type="number" id="numberOfDriverNodes">
+        
+        <label for="testingType">Type of Testing:</label>
+        <select id="testingType">
+          <option value="tsunami">Tsunami</option>
+          <option value="other">Other</option>
+        </select>
+        
+        <div id="tsunamiDelay">
+          <label for="delay">Delay for Tsunami (in seconds):</label>
+          <input type="number" id="delay">
+        </div>
+
+        <label for="pages">Pages:</label>
+        <input type="text" id="pages">
+
+        <!-- Driver Node, Test Id, Metric Results -->
+        <div class="driver-node">
+          <label for="driverNode">Driver Node:</label>
+          <input type="text" id="driverNode">
+          
+          <label for="testId">Test ID:</label>
+          <input type="text" id="testId">
+          
+          <label for="metricResults">Metric Results:</label>
+          <textarea id="metricResults"></textarea>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    function showDashboard() {
+      document.getElementById('triggerPage').style.display = 'none';
+      document.getElementById('dashboard').style.display = 'block';
+    }
+
+    document.getElementById('testingType').addEventListener('change', function () {
+      if (this.value === 'tsunami') {
+        document.getElementById('tsunamiDelay').style.display = 'block';
+      } else {
+        document.getElementById('tsunamiDelay').style.display = 'none';
+      }
+    });
+  </script>
+
+</body>
+</html>
